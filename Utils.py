@@ -12,6 +12,7 @@ from six import BytesIO
 
 from object_detection.utils import label_map_util
 from object_detection.utils import dataset_util
+from object_detection.utils import visualization_utils as vis_util
 
 import tensorflow as tf
 import pandas as pd
@@ -141,8 +142,7 @@ def split(df, group):
   gb = df.groupby(group)
   return [data(filename, gb.get_group(x)) for filename, x in zip(gb.groups.keys(), gb.groups)]
 
-label_map = label_map_util.load_labelmap('label_map.pbtxt')
-label_map_dict = label_map_util.get_label_map_dict(label_map)
+label_map_dict={'tumor_any': 1, 'nonTIL_stromal': 2, 'sTIL': 3}
 
 def create_tf_example(group, path):
     with tf.io.gfile.GFile(os.path.join(path, '{}'.format(group.filename)), 'rb') as fid:
@@ -218,7 +218,7 @@ def run_inference_for_single_image(model, image):
   return output_dict
 
 
-def create_GT_json(gt_csv, label_map_path, gt_json):
+def create_GT_json(gt_csv, label_map_path, gt_json, image_id_dict):
   
   ''' parametros:
     gt_csv - el fichero csv de anotaciones juntadas,
@@ -300,7 +300,7 @@ def create_GT_json(gt_csv, label_map_path, gt_json):
     json.dump(out, file, ensure_ascii=False)
 
 
-def create_DT_json(image_dir, model, dt_json):
+def create_DT_json(image_dir, model, dt_json, image_id_dict):
   out=[]
 
   images = os.listdir(image_dir)
@@ -459,3 +459,31 @@ def compute_f1(gt_json, dt_json, score_thresh):
         f1 = 2 * precision * recall / (precision + recall)
 
     return {'TP': tp, 'FP': fp, 'FN': fn, 'Precision': precision, 'Recall': recall, 'F1': f1}
+
+category_index_test={1: {'id': 1, 'name': 'tumor'},
+ 2: {'id': 2, 'name': 'stromal'},
+ 3: {'id': 3, 'name': 'sTIL'}}
+
+def detectar_nucleos(model, image, score_threshold):
+  image_np = load_image_into_numpy_array(image)
+
+  output_dict = run_inference_for_single_image(model, image_np)
+
+  image_np_det = np.copy(image_np)
+
+  vis_util.visualize_boxes_and_labels_on_image_array(image_np_det,
+    output_dict['detection_boxes'],
+    output_dict['detection_classes'],
+    output_dict['detection_scores'],
+    category_index_test,
+    instance_masks=output_dict.get('detection_masks_reframed', None),
+    use_normalized_coordinates=True,
+    min_score_thresh=score_threshold,
+    line_thickness=2)
+  
+  image_det_path = image[:-4] + '_detection.png'
+
+  image_det = Image.fromarray(image_np_det)
+  image_det.save(image_det_path)
+
+  return image_det_path

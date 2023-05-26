@@ -70,7 +70,7 @@ def detect_and_save(model, image, category_index):
     instance_masks=output_dict.get('detection_masks_reframed', None),
     use_normalized_coordinates=True,
     min_score_thresh=0.36,
-    line_thickness=1)
+    line_thickness=2)
   
   image_det_path = image[:-4] + '_detection.png'
 
