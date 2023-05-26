@@ -25,6 +25,7 @@ Los modelos reentrenados reciben imágenes como entrada, generan detecciones (lo
     - README.md
 
 Cada uno de los directorios correspondientes a modelos contienen:
+
     - checkpoint/         - ficheros de checkpoints, pueden utilizarse como punto de partida para seguir entrenando el modelo
     - saved_model/        - el directorio con ficheros necesarios para cargar y usar el modelo
     - results/            - el directorio de resultados, contiene ficheros JSON de detecciones de cada subconjunto de datos y un .txt con resultados de evaluación de cada clase y cada subconjunto
