@@ -1,0 +1,14 @@
+item {
+	id: 1
+	name: 'tumor_any'
+}
+
+item {
+	id: 2
+	name: 'nonTIL_stromal'
+}
+
+item {
+	id: 3
+	name: 'sTIL'
+}
