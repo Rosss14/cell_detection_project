@@ -38,7 +38,7 @@ shutil.move('cell_detection_project/Utils.py', 'Utils.py')
 
 from Utils import *
 
-index = 0 ### Un valor entre 0 y 3, para utilizar un modelo u otro (ver la siguiente lista)
+index = 0       # Un valor entre 0 y 3, para utilizar un modelo u otro (ver la lista siguiente)
 
 model_dirs = ['EfficientDet_D0', 'EfficientDet_D2', 'CenterNet_Hourglass-104', 'SSD_MobileNet_V2_FPNLite']
 scores = [0.36, 0.33, 0.29, 0.41] # La lista de scores para el mejor rendimiento de cada modelo
@@ -54,7 +54,13 @@ imagen = ''
 
 imagen_detectada = detectar_nucleos(modelo, imagen, score)
 ```
-
+El modelo **CenterNet Hourglass-104** pesa demasiado como para incluirlo en el repositorio, por lo que para usar este hay que añadir el siguente código para cargar sus checkpoints desde **kaggle** y exportar el modelo al formato adecuado. Nota que es necesario especificar el nombre de usuario y la clave de kaggle.
+```
+os.system('kaggle datasets download -d rostyslavzavoiko/train_checkpoints --unzip')
+os.system('python models/research/object_detection/exporter_main_v2.py --pipeline_config_path=pipeline.config --trained_checkpoint_dir=training --output_directory=model_exported')
+model_path = 'model_exported/saved_model'
+                                                   
+```
 # La ejecución de la aplicación web
 Para cargar correctamente la aplicación, abrir la carpeta **App/** en Visual Studio Code y ejecutar el script **app.py**.
 IMPORTANTE: el programa no funcionará correctamente si se abre cualquier directorio que no sea 'App'.
