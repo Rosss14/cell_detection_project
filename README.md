@@ -6,12 +6,12 @@ Se ha utilizado el conjunto de datos _NuCLS_, de imágenes histopatológicas de 
 Los modelos reentrenados reciben imágenes como entrada, generan detecciones (localización y clasificación) y los devuelven en un diccionario.
 
 # La estructura del proyecto
-    - App/
-        - saved_model/
-        - static/ 
-        - templates/
-        - app.py
-        - utils.py
+    - App/                - El directorio de la aplicación web
+        - saved_model/    - El directorio del modelo (en este caso, EfficientDet D0)
+        - static/         - Este directorio se utiliza por la aplicación para guardar imágenes
+        - templates/      - El directorio de las plantillas HTML del proyecto
+        - app.py          - El código del programa, el ejecutable
+        - utils.py        - El código para las funciones auxiliares 
         - label_map.pbtxt - fichero de mapa de etiquetas utilizado para inferencia
     
     - Modelos_reentrenados/
@@ -21,8 +21,14 @@ Los modelos reentrenados reciben imágenes como entrada, generan detecciones (lo
         - SSD_MobileNet_V2_FPNLite/
     
     - label_map.pbtxt     - fichero de mapa de etiquetas (usado para entrenamiento)
-    - Utils.py
+    - Utils.py            - contiene las funciones descritas en la memoria de este trabajo
     - README.md
+
+Cada uno de los directorios correspondientes a modelos contienen:
+    - checkpoint/         - ficheros de checkpoints, pueden utilizarse como punto de partida para seguir entrenando el modelo
+    - saved_model/        - el directorio con ficheros necesarios para cargar y usar el modelo
+    - results/            - el directorio de resultados, contiene ficheros JSON de detecciones de cada subconjunto de datos y un .txt con resultados de evaluación de cada clase y cada subconjunto
+    - pipeline.config     - el fichero de configuración que se utiliza en entrenamiento, validación y exportación del modelo
 
 # La ejecución rápida
 A continuación se puede observar un código que permite usar modelos para hacer inferencia.
@@ -61,6 +67,7 @@ os.system('python models/research/object_detection/exporter_main_v2.py --pipelin
 model_path = 'model_exported/saved_model'
                                                    
 ```
+
 # La ejecución de la aplicación web
 Para cargar correctamente la aplicación, abrir la carpeta **App/** en Visual Studio Code y ejecutar el script **app.py**.
 IMPORTANTE: el programa no funcionará correctamente si se abre cualquier directorio que no sea 'App'.
