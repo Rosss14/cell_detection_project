@@ -5,7 +5,7 @@ células en imágenes histopatológicas.
 Se ha utilizado el conjunto de datos _NuCLS_, de imágenes histopatológicas de cáncer de mama, con anotaciones de posición y categoria de núcleos.
 Los modelos reentrenados reciben imágenes como entrada, generan detecciones (localización y clasificación) y los devuelven en un diccionario.
 
-
+![La pagina de inicio](images/ejemplo.png)
 
 El código entero, incluyendo el proceso de procesamiento de los datos, el entrenamiento, la validación y las pruebas de los modelos se pueden encontrar en:
 * https://github.com/Rosss14/cell_detection_project/tfg_zavoiko.ipynb
