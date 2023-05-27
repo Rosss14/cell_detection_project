@@ -7,7 +7,7 @@
     <img name = 'image' src = "{{input_image}}" alt="Input image">
     <br>
     <br>
-    <form action = "http://localhost:5000/" method="get">
+    <form action = "{{url_for('uploader_file')}}" method="get">
         <button type="submit" class="btn btn-primary">Inicio</button>
     </form>
 {% endblock %}

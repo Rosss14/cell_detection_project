@@ -4,7 +4,7 @@
 {% block content %}
 
 <h1> Imagen a detectar </h1>
-<form action = "http://localhost:5000/detect" method="post">
+<form action = "{{url_for('detectar')}}" method="post">
     <img name = 'image' src = "{{input_image}}" alt="Input image">
     <br>
     <br>
