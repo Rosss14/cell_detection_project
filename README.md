@@ -24,16 +24,37 @@ El código entero, incluyendo el proceso de procesamiento de los datos, el entre
         - CenterNet_Hourglass-104/
         - SSD_MobileNet_V2_FPNLite/
     
+    - GT/                 - El directorio con ficheros JSON de anotaciones verdaderas, uno por subconjunto
+    
+    - images/             - Las imágenes utilizadas en este README
+    
     - label_map.pbtxt     - fichero de mapa de etiquetas (usado para entrenamiento)
+    
     - Utils.py            - contiene las funciones descritas en la memoria de este trabajo
+    
+    - tfg_zavoiko.ipynb   - El notebook de Colab, en el que se presenta todo el proceso desde el procesamiento 
+    
+    de datos hasta las pruebas de modelos
+    
+    - DEMO.ipynb          - El notebook de Colab que utiliza las funciones definidas para ejecutar inferencia rápida
+    
     - README.md
 
 Cada uno de los directorios correspondientes a modelos contienen:
 
-    - checkpoint/         - ficheros de checkpoints, pueden utilizarse como punto de partida para seguir entrenando el modelo
+    - checkpoint/         - ficheros de checkpoints, pueden utilizarse como punto de partida para seguir 
+    
+    entrenando el modelo
+    
     - saved_model/        - el directorio con ficheros necesarios para cargar y usar el modelo
-    - results/            - el directorio de resultados, contiene ficheros JSON de detecciones de cada subconjunto de datos y un .txt con resultados de evaluación de cada clase y cada subconjunto
-    - pipeline.config     - el fichero de configuración que se utiliza en entrenamiento, validación y exportación del modelo
+    
+    - results/            - el directorio de resultados, contiene ficheros JSON de detecciones de cada 
+    
+    subconjunto de datos y un .txt con resultados de evaluación de cada clase y cada subconjunto
+    
+    - pipeline.config     - el fichero de configuración que se utiliza en entrenamiento, validación y 
+    
+    exportación del modelo
 
 # La ejecución rápida
 A continuación se puede observar un código que permite usar modelos para hacer inferencia.
