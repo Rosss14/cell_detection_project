@@ -34,7 +34,7 @@ El código entero, incluyendo el proceso de procesamiento de los datos, el entre
     
     - tfg_zavoiko.ipynb   - El notebook de Colab, en el que se presenta todo el proceso desde el procesamiento 
     
-    de datos hasta las pruebas de modelos
+                            de datos hasta las pruebas de modelos
     
     - DEMO.ipynb          - El notebook de Colab que utiliza las funciones definidas para ejecutar inferencia rápida
     
@@ -44,17 +44,17 @@ Cada uno de los directorios correspondientes a modelos contienen:
 
     - checkpoint/         - ficheros de checkpoints, pueden utilizarse como punto de partida para seguir 
     
-    entrenando el modelo
+                            entrenando el modelo
     
     - saved_model/        - el directorio con ficheros necesarios para cargar y usar el modelo
     
     - results/            - el directorio de resultados, contiene ficheros JSON de detecciones de cada 
     
-    subconjunto de datos y un .txt con resultados de evaluación de cada clase y cada subconjunto
+                            subconjunto de datos y un .txt con resultados de evaluación de cada clase y cada subconjunto
     
     - pipeline.config     - el fichero de configuración que se utiliza en entrenamiento, validación y 
     
-    exportación del modelo
+                            exportación del modelo
 
 # La ejecución rápida
 A continuación se puede observar un código que permite usar modelos para hacer inferencia.
