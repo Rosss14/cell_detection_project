@@ -8,7 +8,7 @@ Los modelos reentrenados reciben imágenes como entrada, generan detecciones (lo
 ![La pagina de inicio](images/ejemplo.png)
 
 El código entero, incluyendo el proceso de procesamiento de los datos, el entrenamiento, la validación y las pruebas de los modelos se pueden encontrar en:
-* [https://github.com/Rosss14/cell_detection_project/tfg_zavoiko.ipynb](https://github.com/Rosss14/cell_detection_project/blob/main/tfg_zavoiko.ipynb)
+* https://github.com/Rosss14/cell_detection_project/blob/main/tfg_zavoiko.ipynb
 # La estructura del proyecto
     - App/                - El directorio de la aplicación web
         - saved_model/    - El directorio del modelo (en este caso, EfficientDet D0)
@@ -74,7 +74,7 @@ model_path = 'model_exported/saved_model'
 ```
 El siguiente notebook sirve para la ejecución rápida, hay que especificar el valor de **index** para elegir el modelo y subir una imagen que desee. Además, es necesario especificar en los campos correspondiente el nombre de usuario y la clave de kaggle, ya que no hacerlo impide la descarga y uso del modelo. Si se usa el **google colab**, se puede subir algunas imágenes :
 
-* https://github.com/Rosss14/cell_detection_project/DEMO.ipynb
+* https://github.com/Rosss14/cell_detection_project/blob/main/DEMO.ipynb
 
 # La ejecución de la aplicación web
 Para cargar correctamente la aplicación, abrir la carpeta **App/** en Visual Studio Code y ejecutar el script **app.py**.
