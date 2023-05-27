@@ -48,6 +48,8 @@ Cada uno de los directorios correspondientes a modelos contienen:
     
     - saved_model/        - el directorio con ficheros necesarios para cargar y usar el modelo
     
+    - validation/         - contiene dos subdirectorios: train/ y val/ , con ficheros TFEvent de validación
+    
     - results/            - el directorio de resultados, contiene ficheros JSON de detecciones de cada 
     
                             subconjunto de datos y un .txt con resultados de evaluación de cada clase y cada subconjunto
